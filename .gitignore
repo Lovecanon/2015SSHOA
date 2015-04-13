@@ -5,6 +5,17 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# bin ignore
+.myeclipse/
+.settings/
+WebRoot/META-INF/
+WebRoot/WEB-INF/classes/
+WebRoot/WEB-INF/lib
+WebRoot/script
+WebRoot/style
+.project
+.classpath
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 

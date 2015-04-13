@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<!-- 开发模式下使用，这样可以打印出更详细的日志信息 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 默认的视图主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<!-- 把Action对象交给Spring创建和管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<!-- Struts2处理的请求后缀,默认值是action -->
+	<constant name="struts.action.extension" value="action" />
+	
+	<!-- 国际化资源文件
+	<constant name="struts.custom.i18n.resources" value="globalMessages" />
+	 -->
+
+	
+	 <package name="default" namespace="/" extends="struts-default">
+		
+		<action name="testAction" class="test.TestAction">
+			<result name="success">/testAction.jsp</result>
+		</action>
+		
+		<action name="add" class="test.TestAction" method="add">
+			<result name="add">/add.jsp</result>
+		</action>
+		
+		<action name="role_*" class="xyz.fourcolor.oa.view.action.RoleAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">role_list</result>
+		</action>
+		
+		<action name="department_*" class="xyz.fourcolor.oa.view.action.DepartmentAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/departmentAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/departmentAction/saveUI.jsp</result>
+			<result name="toList" type="redirectAction">department_list</result>
+		</action>
+
+	</package>
+
+</struts>
+
