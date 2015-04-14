@@ -19,7 +19,7 @@
 		
 		
 		<!-- department属性，本类与Department的多对一 -->
-		<many-to-one name="department" class="Department" column="departmentId"></many-to-one>
+		<many-to-one name="department" class="Department" column="departmentId" lazy="false"></many-to-one>
 		
 		
 		<!-- roles属性，本类与Role的多对多 -->

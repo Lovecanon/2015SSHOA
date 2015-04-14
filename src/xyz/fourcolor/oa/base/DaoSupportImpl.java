@@ -1,6 +1,7 @@
 package xyz.fourcolor.oa.base;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,6 +29,7 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 	protected Session getSession() {
 		return sessionFactory.getCurrentSession();
 	}
+
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -48,20 +50,26 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 	}
 
 	public T getById(Long id) {
-		return (T) this.getSession().get(clazz, id);
+		// 判断传过来的id是否是空如果是空就表明是顶级部门
+		if (id == null) {
+			return null;
+		} else {
+			return (T) this.getSession().get(clazz, id);
+		}
 	}
 
 	public List<T> getByIds(Long[] ids) {
-		return getSession().createQuery(//
-				"FROM" + clazz.getSimpleName() + "WHERE id IN (:ids)")// ;
-				.setParameterList("ids", ids)//
-				.list();
+		if (ids == null || ids.length == 0) {
+			return Collections.EMPTY_LIST;
+		} else {
+			return getSession().createQuery(//
+					"FROM " + clazz.getSimpleName() + " WHERE id IN (:ids)")//
+					.setParameterList("ids", ids)//
+					.list();
+		}
 	}
 
 	public List<T> findAll() {
-//		return this.getSession().createQuery(//
-//				"FROM" + clazz.getSimpleName())//
-//				.list();
 		return getSession().createQuery(//
 				"FROM " + clazz.getSimpleName())//
 				.list();

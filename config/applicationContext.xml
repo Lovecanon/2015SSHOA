@@ -29,8 +29,6 @@
 	<!-- 配置数据源：方法三，使用JNDI方式 -->
 	<!-- <jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}" /> -->
 
-
-
 	<!-- 配置Hibernate的数据源代理工厂：方法一，使用p属性通配符，按文件名搜索匹配的映射文件 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"

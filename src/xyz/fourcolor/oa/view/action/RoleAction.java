@@ -20,9 +20,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class RoleAction extends BaseAction<Role>{
 	
 	public String list() throws Exception {
-System.out.println("1roleList-------->");
 		List<Role> roleList = roleService.findAll();
-System.out.println("2roleList-------->");
 		ActionContext.getContext().put("roleList", roleList);
 		return "list";
 	}

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import xyz.fourcolor.oa.service.DepartmentService;
 import xyz.fourcolor.oa.service.RoleService;
+import xyz.fourcolor.oa.service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -34,8 +35,10 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	
 	@Resource
 	protected RoleService roleService;
-	
 	@Resource
 	protected DepartmentService departmentService;
+	@Resource
+	protected UserService userService;
+
 	
 }
