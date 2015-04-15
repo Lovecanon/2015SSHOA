@@ -15,6 +15,7 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
+	<!-- 配置spring的用于初始化容器对象的监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -39,6 +40,13 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- 用于初始化左侧边栏数据的监听器，一定要配置在Spring的ContextLoaderListener之后，因为要用到Spring容器对象 -->
+	<listener>
+		<listener-class>xyz.fourcolor.oa.util.InitListener</listener-class>
+	</listener>
+	
+	
 	
 	<!-- 配置Spring的用于解决懒加载问题的过滤器 -->
 	<filter>

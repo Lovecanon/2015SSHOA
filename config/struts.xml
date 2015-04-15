@@ -53,6 +53,12 @@
 			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
 			<result name="toIndex" type="redirect">/index.jsp</result>
 		</action>
+		
+		<!-- 首页 -->
+		<action name="home_*" class="xyz.fourcolor.oa.view.action.HomeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
+		
+		</action>
 
 	</package>
 
