@@ -53,7 +53,7 @@
 	<mapping resource="xyz/fourcolor/oa/domain/Department.hbm.xml" />
 	<mapping resource="xyz/fourcolor/oa/domain/Role.hbm.xml" />
 	<mapping resource="xyz/fourcolor/oa/domain/User.hbm.xml" />
-
+	<mapping resource="xyz/fourcolor/oa/domain/Privilege.hbm.xml" />
 
 	<!-- 领域对象：Annotation注解方式
 		<mapping class="实体类全限定名" />

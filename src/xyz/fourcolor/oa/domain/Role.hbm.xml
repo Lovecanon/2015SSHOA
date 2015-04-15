@@ -19,6 +19,12 @@
 			<many-to-many class="User" column="userId"></many-to-many>
 		</set>
 		
+		<!--privileges属性，本类与Privilege的多对多 -->
+		<set name="privileges" table="_role_privilege">
+			<key column="roleId"></key>
+			<many-to-many class="Privilege" column="privilegeId"></many-to-many>
+		</set>
+		
 	</class>
 	
 </hibernate-mapping>
