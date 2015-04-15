@@ -33,6 +33,7 @@
 		<action name="role_*" class="xyz.fourcolor.oa.view.action.RoleAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
+			<result name="setPrivilegeUI">/WEB-INF/jsp/roleAction/setPrivilegeUI.jsp</result>
 			<result name="toList" type="redirectAction">role_list</result>
 		</action>
 		<!-- 部门管理 -->
@@ -46,7 +47,11 @@
 		<action name="user_*" class="xyz.fourcolor.oa.view.action.UserAction" method="{1}">
 			<result name="list">/WEB-INF/jsp/userAction/list.jsp</result>
 			<result name="saveUI">/WEB-INF/jsp/userAction/saveUI.jsp</result>
-			<result name="toList" type="redirectAction">user_list?parentId=${parentId}</result>
+			<result name="toList" type="redirectAction">user_list</result>
+			
+			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+			<result name="logout">/WEB-INF/jsp/userAction/logout.jsp</result>
+			<result name="toIndex" type="redirect">/index.jsp</result>
 		</action>
 
 	</package>

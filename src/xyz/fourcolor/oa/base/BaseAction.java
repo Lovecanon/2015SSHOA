@@ -5,6 +5,7 @@ import java.lang.reflect.ParameterizedType;
 import javax.annotation.Resource;
 
 import xyz.fourcolor.oa.service.DepartmentService;
+import xyz.fourcolor.oa.service.PrivilegeService;
 import xyz.fourcolor.oa.service.RoleService;
 import xyz.fourcolor.oa.service.UserService;
 
@@ -39,6 +40,8 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected DepartmentService departmentService;
 	@Resource
 	protected UserService userService;
+	@Resource
+	protected PrivilegeService privilegeService;
 
 	
 }

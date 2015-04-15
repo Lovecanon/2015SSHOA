@@ -28,6 +28,7 @@ public class Installer {
 		user.setLoginName("admin");
 		user.setName("超级管理员");
 		user.setPassword(DigestUtils.md5Hex("admin"));
+		session.save(user);
 
 		// 保存权限数据
 		Privilege menu, menu1, menu2, menu3, menu4, menu5;

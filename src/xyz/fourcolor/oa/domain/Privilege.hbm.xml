@@ -20,7 +20,7 @@
 		</set>
 		
 		<!-- parent属性，本类与Privilege(上级)的多对一 -->
-		<many-to-one name="parent" class="Privilege" column="parentId"></many-to-one>
+		<many-to-one name="parent" class="Privilege" column="parentId" lazy="false"></many-to-one>
 		
 		<!-- children属性，本类与Privilege(下级)的一对多 -->
 		<set name="children">

@@ -38,7 +38,7 @@
 				<td>
 					<s:a action="role_delete?id=%{id}" onclick="return confirm('确定要删除吗？')">删除</s:a>
 					<s:a action="role_editUI?id=%{id}">修改</s:a>
-					<a href="setPrivilegeUI.html">设置权限</a>
+					<s:a action="role_setPrivilegeUI?id=%{id}">设置权限</s:a>
 				</td>
 			</tr>
         </s:iterator>
