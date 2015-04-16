@@ -1,7 +1,10 @@
 package xyz.fourcolor.oa.domain;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.opensymphony.xwork2.ActionContext;
 
 public class User {
 	private Long id;
@@ -24,7 +27,6 @@ public class User {
 		if (isAdmin()) {
 			return true;
 		}
-
 		// 普通用户要判断是否含有这个权限
 		for (Role role : roles) {
 			for (Privilege privilege : role.getPrivileges()) {
@@ -41,17 +43,32 @@ public class User {
 		if (isAdmin()) {
 			return true;
 		}
-		//去掉链接？号后面的参数
+		// 去掉链接？号后面的参数
 		int pos = privUrl.indexOf("?");
-		if(pos > -1) {
+		if (pos > -1) {
 			privUrl = privUrl.substring(0, pos);
 		}
-		//去掉链接后面的UI
-		if(privUrl.endsWith("UI")) {
+		// 去掉链接后面的UI
+		if (privUrl.endsWith("UI")) {
 			privUrl = privUrl.substring(0, privUrl.length() - 2);
 		}
-		
-		return false;
+
+		// 如果本URL不需要权限验证，则登录用户就可以使用
+		@SuppressWarnings("unchecked")
+		Collection<String> allPrivilegeUrls = (Collection<String>) ActionContext
+				.getContext().getApplication().get("allPrivilegeUrls");
+		if (!allPrivilegeUrls.contains(privUrl)) {
+			return true;
+		} else {// 普通用户要判断是否含有这个权限
+			for (Role role : roles) {
+				for (Privilege privilege : role.getPrivileges()) {
+					if (privUrl.equals(privilege.getUrl())) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
 	}
 
 	/**

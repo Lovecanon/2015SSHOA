@@ -20,6 +20,22 @@
 
 	
 	 <package name="default" namespace="/" extends="struts-default">
+	 
+	 	<interceptors>
+	 		<!-- 声明 -->
+			<interceptor name="checkPrivilege" class="xyz.fourcolor.oa.util.CheckPrivilegeInterceptor"></interceptor>	 	
+	 		<!-- 重新定义默认拦截器栈 -->
+	 		<interceptor-stack name="defaultStack">
+	 			<interceptor-ref name="checkPrivilege"></interceptor-ref>
+	 			<interceptor-ref name="defaultStack"></interceptor-ref>
+	 		</interceptor-stack>
+	 	</interceptors>
+	 	
+	 	<global-results>
+			<result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+			<result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+	 	</global-results>
+	 	
 		
 		<action name="testAction" class="test.TestAction">
 			<result name="success">/testAction.jsp</result>

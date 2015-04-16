@@ -1,5 +1,6 @@
 package xyz.fourcolor.oa.util;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.ServletContextEvent;
@@ -30,6 +31,12 @@ public class InitListener implements ServletContextListener {
 		sce.getServletContext().setAttribute("topPrivilegeList",
 				topPrivilegeList);
 		System.out.println("-----左侧边栏顶级菜单已准备-----");
+		
+		//准备数据：allPrivilegeUrls
+		Collection<String> allPrivilegeUrls = privilegeService.getAllPrivilegeUrls();
+		sce.getServletContext().setAttribute("allPrivilegeUrls",
+				allPrivilegeUrls);
+		System.out.println("-----不要要验证的URl已准备-----");
 	}
 
 	public void contextDestroyed(ServletContextEvent sce) {
