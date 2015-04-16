@@ -17,7 +17,6 @@ public class Privilege {
 	}
 	
 	public Privilege(String name, String url, Privilege parent) {
-		super();
 		this.name = name;
 		this.url = url;
 		this.parent = parent;

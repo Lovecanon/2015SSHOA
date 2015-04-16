@@ -19,7 +19,7 @@ public class User {
 	/**
 	 * 判断本用户是否有指定名称的权限
 	 */
-	public boolean hasPrivilegeByName(String name) {
+	public boolean hasPrivilegeByName(String jspName) {
 		// 超级管理有所有的权限
 		if (isAdmin()) {
 			return true;
@@ -27,12 +27,30 @@ public class User {
 
 		// 普通用户要判断是否含有这个权限
 		for (Role role : roles) {
-			for (Privilege priv : role.getPrivileges()) {
-				if (priv.getName().equals(name)) {
+			for (Privilege privilege : role.getPrivileges()) {
+				if (privilege.getName().equals(jspName)) {
 					return true;
 				}
 			}
 		}
+		return false;
+	}
+
+	public boolean hasPrivilegeByUrl(String privUrl) {
+		// 超级管理有所有的权限
+		if (isAdmin()) {
+			return true;
+		}
+		//去掉链接？号后面的参数
+		int pos = privUrl.indexOf("?");
+		if(pos > -1) {
+			privUrl = privUrl.substring(0, pos);
+		}
+		//去掉链接后面的UI
+		if(privUrl.endsWith("UI")) {
+			privUrl = privUrl.substring(0, privUrl.length() - 2);
+		}
+		
 		return false;
 	}
 
