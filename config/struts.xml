@@ -81,6 +81,26 @@
 			<result name="saveUI">/WEB-INF/jsp/forumManageAction/saveUI.jsp</result>
 			<result name="toList" type="redirectAction">forumManage_list</result>
 		</action>
+		
+		
+		<!-- 论坛： 板块相关功能 -->
+		<action name="forum_*" class="xyz.fourcolor.oa.view.action.ForumAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/forumAction/list.jsp</result>
+			<result name="show">/WEB-INF/jsp/forumAction/show.jsp</result>
+		</action>
+		
+		<!-- 论坛： 主题相关功能 -->
+		<action name="topic_*" class="xyz.fourcolor.oa.view.action.TopicAction" method="{1}">
+			<result name="show">/WEB-INF/jsp/topicAction/show.jsp</result>
+			<result name="addUI">/WEB-INF/jsp/topicAction/addUI.jsp</result>
+			<result name="toShow" type="redirectAction">topic_show</result>
+		</action>
+		
+		<!-- 论坛： 回复相关功能-->
+		<action name="reply_*" class="xyz.fourcolor.oa.view.action.ReplyAction" method="{1}">
+			<result name="addUI">/WEB-INF/jsp/replyAction/addUI.jsp</result>
+			<result name="toTopicShow" type="redirectAction">topic_show</result>
+		</action>
 
 	</package>
 

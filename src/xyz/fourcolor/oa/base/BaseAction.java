@@ -4,12 +4,16 @@ import java.lang.reflect.ParameterizedType;
 
 import javax.annotation.Resource;
 
+import xyz.fourcolor.oa.domain.User;
 import xyz.fourcolor.oa.service.DepartmentService;
 import xyz.fourcolor.oa.service.ForumService;
 import xyz.fourcolor.oa.service.PrivilegeService;
+import xyz.fourcolor.oa.service.ReplyService;
 import xyz.fourcolor.oa.service.RoleService;
+import xyz.fourcolor.oa.service.TopicService;
 import xyz.fourcolor.oa.service.UserService;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -45,6 +49,16 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected PrivilegeService privilegeService;
 	@Resource
 	protected ForumService forumService;
-
 	
+	@Resource
+	protected TopicService topicService;
+	@Resource
+	protected ReplyService replyService;
+
+	/*
+	 * 获取当前登录用户
+	 */
+	protected User getCurrentUser() {
+		return (User) ActionContext.getContext().getSession().get("user");
+	}
 }
