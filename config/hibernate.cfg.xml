@@ -59,6 +59,8 @@
 		<mapping class="实体类全限定名" />
 	-->
 	<mapping resource="xyz/fourcolor/oa/domain/Forum.hbm.xml" />
+	<mapping resource="xyz/fourcolor/oa/domain/Reply.hbm.xml" />
+	<mapping resource="xyz/fourcolor/oa/domain/Topic.hbm.xml" />
 
 
 
