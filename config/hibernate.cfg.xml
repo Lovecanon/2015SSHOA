@@ -58,7 +58,8 @@
 	<!-- 领域对象：Annotation注解方式
 		<mapping class="实体类全限定名" />
 	-->
-	
+	<mapping resource="xyz/fourcolor/oa/domain/Forum.hbm.xml" />
+
 
 
 </session-factory>
