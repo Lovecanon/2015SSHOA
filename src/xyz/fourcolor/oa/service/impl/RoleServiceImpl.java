@@ -1,12 +1,13 @@
 package xyz.fourcolor.oa.service.impl;
 
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import xyz.fourcolor.oa.base.DaoSupportImpl;
 import xyz.fourcolor.oa.domain.Role;
 import xyz.fourcolor.oa.service.RoleService;
+
+
 
 @Service("roleService")
 @Transactional

@@ -10,15 +10,15 @@ import xyz.fourcolor.oa.domain.Forum;
 import xyz.fourcolor.oa.domain.Topic;
 import xyz.fourcolor.oa.service.TopicService;
 
+
 @Service
 @Transactional
 @SuppressWarnings("unchecked")
-public class TopicServiceImpl extends DaoSupportImpl<Topic> implements
-		TopicService {
+public class TopicServiceImpl extends DaoSupportImpl<Topic> implements TopicService {
 
 	public List<Topic> findByForum(Forum forum) {
-		return getSession()
-				.createQuery(//排序：所有置顶帖在最上面，并按最后更新时间排序，让新状态的在上面。
+		return getSession().createQuery(//
+				// 排序：所有置顶帖在最上面，并按最后更新时间排序，让新状态的在上面。
 				"FROM Topic t WHERE t.forum=? ORDER BY (CASE t.type WHEN 2 THEN 2 ELSE 0 END) DESC, t.lastUpdateTime DESC")//
 				.setParameter(0, forum)//
 				.list();

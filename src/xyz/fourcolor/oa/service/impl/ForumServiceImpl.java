@@ -18,18 +18,17 @@ public class ForumServiceImpl extends DaoSupportImpl<Forum> implements
 	@Override
 	public List<Forum> findAll() {
 		return this.getSession().createQuery(//
-				"FROM Forum f ORDER BY f.position ASC")//
+				"FROM Forum f ORDER BY f.position")//
 				.list();
 	};
-	
+
 	@Override
 	public void save(Forum forum) {
-		//保存,保存完之后就会生成它的主键，
+		// 保存,保存完之后就会生成它的主键，
 		super.save(forum);
-		//设置position的值，可以不用手动更新到数据库中去
+		// 设置position的值，可以不用手动更新到数据库中去
 		forum.setPosition(forum.getId().intValue());
 	};
-	
 
 	public void moveUp(Long id) {
 		// 找出相关的Forum
@@ -40,11 +39,11 @@ public class ForumServiceImpl extends DaoSupportImpl<Forum> implements
 				.setFirstResult(0)//
 				.setMaxResults(1)//
 				.uniqueResult();
-		//最上面的不能上移
-		if(other == null) {
+		// 最上面的不能上移
+		if (other == null) {
 			return;
 		}
-		
+
 		// 交换position
 		int temp = forum.getPosition();
 		forum.setPosition(other.getPosition());
@@ -69,8 +68,8 @@ public class ForumServiceImpl extends DaoSupportImpl<Forum> implements
 				.setFirstResult(0)//
 				.setMaxResults(1)//
 				.uniqueResult();
-		//最下面的不能下移
-		if(other == null) {
+		// 最下面的不能下移
+		if (other == null) {
 			return;
 		}
 		// 交换position
@@ -87,5 +86,4 @@ public class ForumServiceImpl extends DaoSupportImpl<Forum> implements
 		this.getSession().update(other);
 
 	}
-
 }
